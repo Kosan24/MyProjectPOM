@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 public class HotelMyCampPage {
@@ -26,5 +27,26 @@ public class HotelMyCampPage {
     public WebElement  aucunSigneDentréeElement;
 
     @FindBy(xpath = "//span[text()='ListOfUsers']")
- public WebElement lettreDentréeRéussieElement;
+    public WebElement lettreDentréeRéussieElement;
+
+    @FindBy(xpath = "//span[text()='Hotel Management']")
+    public WebElement hotelMenagementLink;
+
+    @FindBy(xpath = "//a[@href='/admin/HotelAdmin']")
+    public WebElement hotelListLink;
+
+    @FindBy(xpath = "//a[@class='btn btn-circle btn-default']")
+    public WebElement addHotelLink;
+
+    @FindBy(xpath = "(//input[@id='Code']")
+    public WebElement addHotelCodeBoite;
+
+    public void faireSonEntrée(){
+     Driver.getDriver().get(ConfigReader.getProperty("HMCUrl"));
+     linkLogin.click();
+     usernameBox.sendKeys(ConfigReader.getProperty("HMCValidUsername"));
+     passwordBox.sendKeys(ConfigReader.getProperty("HMCValidPassword"));
+     loginButton.click();
+    }
+
 }
